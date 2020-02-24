@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Students from './components/students';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    students: [
+      { name: 'Alapakam', age: '24' },
+      { name: 'Dorababu', age: '25' },
+      { name: 'Suresh', age: '25' },
+      { name: 'Devendra', age: '26' },
+    ]
+  }
+  render() {
+    return (
+      <div className="App" >
+        <Students students={this.state.students} />
+      </div>
+    );
+  }
 }
 
 export default App;
