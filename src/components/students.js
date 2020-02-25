@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function Students(props) {
-    const { students } = props
-    const studentList = students.map(student => {
-        return (<h1>Welcome {student.name} your age is {student.age} </h1>)
-    })
-    return (
-        <div className="App">
-            {studentList}
-        </div>
-    );
+
+class Students extends Component {
+
+    handleDelete = (e) => {
+        this.props.deleteStudent(e.target.id)
+    }
+    render() {
+        const { students } = this.props
+        let student = students.map(stu => {
+            return (<li key={stu.id}>
+                {stu.name}, {stu.age}
+                <button onClick={this.handleDelete} id={stu.id}>Delete</button>
+            </li>)
+        })
+        console.log(student)
+        return (
+            <ul>
+                {student}
+            </ul>
+        );
+    }
 }
 
 export default Students;
